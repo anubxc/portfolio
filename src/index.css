@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+@import "tailwindcss";
+
+@font-face {
+  font-family: "BrandLocal";
+  src: url("/caa3a2e1cccd8315-s.p.853070df.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpaceGroteskLight";
+  src: url("/fonts/Space-Grotesk-Light1.woff") format("woff");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+:root {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px clamp(16px, 8vw, 150px);
+    background-color: #1a1a1a;
+}
+
+body {
+    margin: 0;
+}
+
+@theme {
+  --font-lato: "Lato", sans-serif;
+  --font-brand: "BrandLocal", sans-serif;
+  --font-spacegrotesk: "SpaceGroteskLight", sans-serif;
+}
