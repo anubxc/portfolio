@@ -38,7 +38,7 @@ const skillGroups = [
 
 const Skills = () => {
   return (
-    <section className='min-h-screen w-full pb-16 pt-24 text-white'>
+    <section id='skills' className='min-h-screen w-full pb-16 pt-24 text-white'>
       <div className='mx-auto max-w-6xl'>
         <div className='mb-10'>
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>

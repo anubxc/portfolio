@@ -7,7 +7,7 @@ const projects = [
     description:
       'AI-powered platform that analyzes resumes and generates personalized interview questions and preparation plans.',
     image:
-      'https://images.unsplash.com/photo-1658549677516-b28676117c46?q=80&w=977&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      './interview.png',
     stack: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Groq API'],
     live: '#',
     github: '#',
@@ -17,7 +17,7 @@ const projects = [
     description:
       'Full-stack social feed application with secure uploads, dynamic posts, and optimized image handling.',
     image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
+      './feed-app.jpg',
     stack: ['React', 'Node.js', 'Express.js', 'MongoDB', 'ImageKit'],
     live: '#',
     github: '#',
@@ -27,7 +27,7 @@ const projects = [
     description:
       'Responsive study scheduling interface with complete CRUD operations and smooth UX across devices.',
     image:
-      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop',
+      './study-scheduler.jpg',
     stack: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     live: '#',
     github: '#',
@@ -37,7 +37,7 @@ const projects = [
     description:
       'Personal portfolio focused on clean design, performance, and strong presentation of projects and skills.',
     image:
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop',
+      './folio.png',
     stack: ['React', 'Vite', 'Tailwind CSS'],
     live: '#',
     github: '#',
@@ -46,7 +46,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className='min-h-screen w-full pb-16 pt-24 text-white'>
+    <section id='project' className='min-h-screen w-full pb-16 pt-24 text-white'>
       <div className='mx-auto max-w-6xl'>
         <div className='mb-10'>
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>

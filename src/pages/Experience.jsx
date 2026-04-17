@@ -15,24 +15,24 @@ const experiences = [
     ],
     stack: ['HTML5', 'CSS3', 'JavaScript', 'React'],
   },
-  {
-    role: 'Frontend Developer',
-    company: 'Freelance',
-    period: '2025 - Present',
-    type: 'Freelance · Remote',
-    duration: 'Present',
-    points: [
-      'Built responsive and interactive interfaces using React, CSS3, and JavaScript',
-      'Created developer-ready UI designs in Figma with reusable components and clear structure',
-      'Enhanced user experience with GSAP animations, prototyping, and structured flows using Lucidchart',
-    ],
-    stack: ['React', 'CSS3', 'JavaScript', 'Figma', 'Lucidchart', 'GSAP'],
-  },
+  // {
+  //   role: 'Backend Developer',
+  //   company: 'Self Employed',
+  //   period: '2025 - Present',
+  //   type: 'Self Employed',
+  //   duration: 'Present',
+  //   points: [
+  //     'Built responsive and interactive interfaces using React, CSS3, and JavaScript',
+  //     'Created developer-ready UI designs in Figma with reusable components and clear structure',
+  //     'Enhanced user experience with GSAP animations, prototyping, and structured flows using Lucidchart',
+  //   ],
+  //   stack: ['React', 'CSS3', 'JavaScript', 'Figma', 'Lucidchart', 'GSAP'],
+  // },
 ]
 
 const Experience = () => {
   return (
-    <section className='min-h-screen w-full pb-16 pt-24 text-white'>
+    <section id='experience' className='min-h-screen w-full pb-16 pt-24 text-white'>
       <div className='mx-auto max-w-6xl'>
         <div className='mb-10 grid gap-6 md:grid-cols-[1.3fr_1fr] md:items-end'>
           <div>

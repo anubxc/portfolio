@@ -6,6 +6,8 @@ import Skills from './pages/Skills'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import Github from './pages/Github'
+import Contact from './pages/Contact'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
       <Projects/>
       <Experience/>
       <Github/>
+      <Contact/>
+      <Footer/>
     </div>
   )
 }

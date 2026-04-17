@@ -29,8 +29,14 @@ body {
     margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --font-lato: "Lato", sans-serif;
   --font-brand: "BrandLocal", sans-serif;
   --font-spacegrotesk: "SpaceGroteskLight", sans-serif;
 }
+
+

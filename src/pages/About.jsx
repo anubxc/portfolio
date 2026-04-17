@@ -1,11 +1,12 @@
+import { ArrowUpRight, MoveUpRight } from 'lucide-react'
 import React from 'react'
 
 const About = () => {
   const stats = [
     { value: '2+', label: 'Years Coding' },
-    { value: '4+', label: 'Projects Completed' },
-    { value: '1', label: 'Experiment Built' },
-    { value: '15+', label: 'Users Served' },
+    { value: '12+', label: 'Projects Completed' },
+    // { value: '1', label: 'Experiment Built' },
+    // { value: '15+', label: 'Users Served' },
   ]
 
   const socials = [
@@ -26,13 +27,13 @@ const About = () => {
     },
     {
       name: 'Email',
-      href: 'mailto:anubhavgupta1045@google.com',
+      href: 'mailto:anubhavgupta1045@gmail.com',
       icon: 'M3 4h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm17 3.24-7.93 7.1a1 1 0 0 1-1.33 0L3 7.21V18h17V7.24ZM4.51 6l6.82 6.02L18.05 6H4.51Z',
     },
   ]
 
   return (
-    <section className='min-h-screen pt-24 pb-16 text-white'>
+    <section id='about' className='min-h-screen pt-24 pb-16 text-white'>
       <div className='mx-auto max-w-6xl'>
         <div className='mb-12'>
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>
@@ -48,9 +49,9 @@ const About = () => {
             <p className='font-brand text-lg leading-relaxed text-neutral-300'>
               I&apos;m a final year B.Tech Computer Science student and a frontend-focused developer skilled in React.js, JavaScript (ES6+), and the MERN stack, with a strong foundation in building scalable and high-performance web applications. I work with tools and technologies like Tailwind CSS, Node.js, Express, MongoDB, and JWT, and I enjoy enhancing user experiences through clean UI, efficient architecture, and smooth interactions.
             </p>
-            <p className='mt-6 font-brand text-lg leading-relaxed text-neutral-300'>
+            {/* <p className='mt-6 font-brand text-lg leading-relaxed text-neutral-300'>
               I have hands-on experience as a Frontend Developer at Edunet Foundation, where I built a responsive study scheduler with full CRUD functionality and optimized performance across browsers. I&apos;ve also developed projects like an AI Interview Planner and a full-stack post feed app, gaining practical experience in integrating APIs, handling authentication, and building real-world, user-focused applications.
-            </p>
+            </p> */}
 
             <div className='mt-8 grid gap-4 sm:grid-cols-2'>
               {stats.map((item) => (
@@ -76,6 +77,7 @@ const About = () => {
             <div className='mt-6 space-y-3'>
               {socials.map((social) => (
                 <a
+                  target="_blank"
                   key={social.name}
                   href={social.href}
                   className='group flex items-center justify-between rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 transition duration-300 hover:border-orange-700/60 hover:bg-neutral-900'
@@ -97,7 +99,7 @@ const About = () => {
                     </span>
                   </div>
                   <span className='text-xs uppercase tracking-wider text-neutral-500 transition group-hover:text-orange-300'>
-                    Open
+                    <ArrowUpRight />
                   </span>
                 </a>
               ))}
