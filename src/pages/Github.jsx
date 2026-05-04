@@ -5,7 +5,7 @@ const USERNAME = 'anubxc'
 const PROFILE_URL = `https://github.com/${USERNAME}`
 const USER_API = `https://api.github.com/users/${USERNAME}`
 const REPOS_API = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`
-const EVENTS_API = `https://api.github.com/users/${USERNAME}/events/public?per_page=30`
+const MAX_COMMIT_REPOS = 6
 
 const formatDate = (date) => {
   if (!date) return 'Recently'
@@ -17,18 +17,13 @@ const formatDate = (date) => {
   }).format(new Date(date))
 }
 
-const getLatestCommits = (events) =>
-  events
-    .filter((event) => event.type === 'PushEvent' && Array.isArray(event.payload?.commits))
-    .flatMap((event) =>
-      event.payload.commits.map((commit) => ({
-        repo: event.repo.name.replace(`${USERNAME}/`, ''),
-        message: commit.message,
-        date: event.created_at,
-        url: `https://github.com/${event.repo.name}/commit/${commit.sha}`,
-      })),
-    )
-    .slice(0, 5)
+const getRepoCommitsApi = (repo) => {
+  const repoName = encodeURIComponent(repo.name)
+  const author = encodeURIComponent(USERNAME)
+  const branch = repo.default_branch ? `&sha=${encodeURIComponent(repo.default_branch)}` : ''
+
+  return `https://api.github.com/repos/${USERNAME}/${repoName}/commits?per_page=1&author=${author}${branch}`
+}
 
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-store' })
@@ -38,6 +33,48 @@ async function fetchJson(url) {
   }
 
   return response.json()
+}
+
+async function fetchLatestCommits(repos) {
+  const candidateRepos = repos
+    .filter((repo) => !repo.fork)
+    .sort(
+      (firstRepo, secondRepo) =>
+        new Date(secondRepo.pushed_at || secondRepo.updated_at || 0) -
+        new Date(firstRepo.pushed_at || firstRepo.updated_at || 0),
+    )
+    .slice(0, MAX_COMMIT_REPOS)
+
+  const commitResults = await Promise.all(
+    candidateRepos.map(async (repo) => {
+      try {
+        const commitData = await fetchJson(getRepoCommitsApi(repo))
+        const latestCommit = Array.isArray(commitData) ? commitData[0] : null
+
+        if (!latestCommit) return null
+
+        return {
+          repo: repo.name,
+          message: latestCommit.commit?.message?.split('\n')[0] || 'Recent update',
+          date:
+            latestCommit.commit?.author?.date ||
+            latestCommit.commit?.committer?.date ||
+            repo.pushed_at,
+          url: latestCommit.html_url || `${repo.html_url}/commits`,
+        }
+      } catch {
+        return null
+      }
+    }),
+  )
+
+  return commitResults
+    .filter(Boolean)
+    .sort(
+      (firstCommit, secondCommit) =>
+        new Date(secondCommit.date || 0) - new Date(firstCommit.date || 0),
+    )
+    .slice(0, 5)
 }
 
 const StatCard = ({ icon, label, value }) => (
@@ -70,20 +107,22 @@ const Github = () => {
           fetchJson(REPOS_API),
         ])
 
+        const normalizedRepos = Array.isArray(reposData) ? reposData : []
+
         if (!active) return
 
         setUser(userData)
-        setRepos(Array.isArray(reposData) ? reposData : [])
-      } catch (githubError) {
-        errors.push(githubError.message)
-      }
+        setRepos(normalizedRepos)
 
-      try {
-        const eventsData = await fetchJson(EVENTS_API)
+        try {
+          const latestCommits = await fetchLatestCommits(normalizedRepos)
 
-        if (!active) return
+          if (!active) return
 
-        setCommits(getLatestCommits(Array.isArray(eventsData) ? eventsData : []))
+          setCommits(latestCommits)
+        } catch (githubError) {
+          errors.push(githubError.message)
+        }
       } catch (githubError) {
         errors.push(githubError.message)
       }
@@ -110,7 +149,7 @@ const Github = () => {
     return [
       {
         label: 'Contributions',
-        value: 210,
+        value: 220,
         icon: Activity,
       },
       {
