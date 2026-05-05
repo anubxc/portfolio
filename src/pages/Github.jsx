@@ -6,15 +6,34 @@ const PROFILE_URL = `https://github.com/${USERNAME}`
 const USER_API = `https://api.github.com/users/${USERNAME}`
 const REPOS_API = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`
 const MAX_COMMIT_REPOS = 6
+const MAX_VISIBLE_COMMITS = 3
 
-const formatDate = (date) => {
-  if (!date) return 'Recently'
+const formatRelativeTime = (date) => {
+  if (!date) return 'Just now'
 
-  return new Intl.DateTimeFormat('en', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(date))
+  const now = Date.now()
+  const commitTime = new Date(date).getTime()
+  const diffInSeconds = Math.max(0, Math.round((now - commitTime) / 1000))
+
+  if (diffInSeconds < 60) return 'Just now'
+
+  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
+  const timeUnits = [
+    ['year', 60 * 60 * 24 * 365],
+    ['month', 60 * 60 * 24 * 30],
+    ['week', 60 * 60 * 24 * 7],
+    ['day', 60 * 60 * 24],
+    ['hour', 60 * 60],
+    ['minute', 60],
+  ]
+
+  for (const [unit, seconds] of timeUnits) {
+    if (diffInSeconds >= seconds) {
+      return rtf.format(-Math.floor(diffInSeconds / seconds), unit)
+    }
+  }
+
+  return 'Just now'
 }
 
 const getRepoCommitsApi = (repo) => {
@@ -74,7 +93,7 @@ async function fetchLatestCommits(repos) {
       (firstCommit, secondCommit) =>
         new Date(secondCommit.date || 0) - new Date(firstCommit.date || 0),
     )
-    .slice(0, 5)
+    .slice(0, MAX_VISIBLE_COMMITS)
 }
 
 const StatCard = ({ icon, label, value }) => (
@@ -234,23 +253,25 @@ const Github = () => {
                   href={commit.url}
                   target='_blank'
                   rel='noreferrer'
-                  className='group block rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 transition duration-300 hover:border-orange-700/60 hover:bg-neutral-900'
+                  className='group block border-b border-neutral-800 py-4 transition duration-300 hover:border-orange-700/60'
                 >
                   <div className='flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between'>
                     <div>
-                      <p className='text-sm font-medium text-orange-300'>{commit.repo}</p>
-                      <p className='mt-2 line-clamp-2 text-sm leading-relaxed text-neutral-200 sm:text-base'>
+                      <p className='text-xs font-medium uppercase tracking-[0.16em] text-neutral-500'>
+                        {USERNAME}/{commit.repo}
+                      </p>
+                      <p className='mt-2 line-clamp-2 text-sm leading-relaxed text-neutral-300 sm:text-base'>
                         {commit.message}
                       </p>
                     </div>
                     <span className='shrink-0 text-xs text-neutral-500'>
-                      {formatDate(commit.date)}
+                      {formatRelativeTime(commit.date)}
                     </span>
                   </div>
                 </a>
               ))
             ) : (
-              <p className='rounded-xl border border-neutral-800 bg-neutral-950/60 p-4 text-sm text-neutral-400'>
+              <p className='py-4 text-sm text-neutral-400'>
                 No recent public commits found.
               </p>
             )}

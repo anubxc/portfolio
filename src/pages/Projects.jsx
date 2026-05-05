@@ -3,6 +3,16 @@ import React from 'react'
 
 const projects = [
   {
+    title: 'EcoBin - Smart Waste Management System',
+    description:
+      'Full-stack waste management platform with smart bin tracking, reward tokens, user dashboards, feedback workflows, and admin analytics for sustainable action.',
+    image:
+      './ecobin.png',
+    stack: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    live: 'https://ecobin-v1.onrender.com',
+    github: 'https://github.com/anubxc/ecobin',
+  },
+  {
     title: 'AI Interview Planner',
     description:
       'AI-powered platform that analyzes resumes and generates personalized interview questions and preparation plans.',
@@ -29,16 +39,6 @@ const projects = [
     image:
       './study-scheduler.jpg',
     stack: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
-    live: '#',
-    github: '#',
-  },
-  {
-    title: 'Portfolio Website',
-    description:
-      'Personal portfolio focused on clean design, performance, and strong presentation of projects and skills.',
-    image:
-      './folio.png',
-    stack: ['React', 'Vite', 'Tailwind CSS'],
     live: '#',
     github: '#',
   },
@@ -94,6 +94,7 @@ const Projects = () => {
                 <div className='mt-6 flex gap-3'>
                   <a
                     href={project.live}
+                    target='_blank'
                     className='inline-flex items-center gap-2 rounded-full bg-orange-700 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-orange-800'
                   >
                     Live Demo
@@ -101,6 +102,7 @@ const Projects = () => {
                   </a>
                   <a
                     href={project.github}
+                    target='_blank'
                     className='inline-flex items-center gap-2 rounded-full border border-neutral-700 px-4 py-2 text-sm text-neutral-200 transition duration-300 hover:border-neutral-500 hover:bg-neutral-900'
                   >
                     Source
