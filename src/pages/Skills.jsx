@@ -44,10 +44,10 @@ const Skills = () => {
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>
             Skills
           </p>
-          <h1 className='mt-5 text-4xl font-bold text-neutral-100 sm:text-5xl'>
+          <h1 className='mt-5 text-3xl font-bold text-neutral-100 sm:text-5xl'>
             My <span className='text-orange-700'>Tool</span>kit
           </h1>
-          <p className='mt-4 max-w-3xl text-base leading-relaxed text-neutral-400 sm:text-lg'>
+          <p className='mt-4 max-w-3xl text-sm leading-relaxed text-neutral-400 sm:text-lg'>
             I&apos;m constantly refining my daily production stack, exploring new technologies,
             and leveraging practical tools to ship high-quality products faster.
           </p>
@@ -57,14 +57,14 @@ const Skills = () => {
           {skillGroups.map((group) => (
             <article
               key={group.title}
-              className={`rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/40 p-6 transition duration-300 ${group.ring}`}
+              className={`rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/40 p-5 transition duration-300 sm:p-6 ${group.ring}`}
             >
-              <h2 className={`text-xl font-semibold ${group.accent}`}>{group.title}</h2>
+              <h2 className={`text-lg font-semibold sm:text-xl ${group.accent}`}>{group.title}</h2>
               <div className='mt-5 flex flex-wrap gap-3'>
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className='rounded-full border border-neutral-700 bg-neutral-900/70 px-4 py-2 text-sm text-neutral-200 transition duration-300 hover:border-neutral-500 hover:bg-neutral-800'
+                    className='rounded-full border border-neutral-700 bg-neutral-900/70 px-3 py-1.5 text-xs text-neutral-200 transition duration-300 hover:border-neutral-500 hover:bg-neutral-800 sm:px-4 sm:py-2 sm:text-sm'
                   >
                     {skill}
                   </span>

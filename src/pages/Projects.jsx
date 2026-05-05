@@ -52,10 +52,10 @@ const Projects = () => {
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>
             Work
           </p>
-          <h1 className='mt-5 text-4xl font-bold text-neutral-100 sm:text-5xl'>
+          <h1 className='mt-5 text-3xl font-bold text-neutral-100 sm:text-5xl'>
             <span className='text-orange-700'>Pro</span>jects
           </h1>
-          <p className='mt-4 max-w-3xl text-base leading-relaxed text-neutral-400 sm:text-lg'>
+          <p className='mt-4 max-w-3xl text-sm leading-relaxed text-neutral-400 sm:text-lg'>
             A selection of products I&apos;ve built across full-stack apps, interactive UI, and
             real-world problem solving.
           </p>
@@ -68,14 +68,14 @@ const Projects = () => {
               className='overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/40 transition duration-300 hover:-translate-y-1 hover:border-orange-700/60'
             >
               <img
-                className='h-52 w-full object-cover'
+                className='h-44 w-full object-cover sm:h-52'
                 src={project.image}
                 alt={project.title}
                 loading='lazy'
               />
 
-              <div className='p-5 sm:p-6'>
-                <h2 className='text-xl font-semibold text-neutral-100'>{project.title}</h2>
+              <div className='p-4 sm:p-6'>
+                <h2 className='text-lg font-semibold text-neutral-100 sm:text-xl'>{project.title}</h2>
                 <p className='mt-3 text-sm leading-relaxed text-neutral-400 sm:text-base'>
                   {project.description}
                 </p>
@@ -91,11 +91,11 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className='mt-6 flex gap-3'>
+                <div className='mt-6 flex flex-col gap-3 sm:flex-row'>
                   <a
                     href={project.live}
                     target='_blank'
-                    className='inline-flex items-center gap-2 rounded-full bg-orange-700 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-orange-800'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-full bg-orange-700 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:bg-orange-800 sm:w-auto'
                   >
                     Live Demo
                     <ExternalLink size={16} />
@@ -103,7 +103,7 @@ const Projects = () => {
                   <a
                     href={project.github}
                     target='_blank'
-                    className='inline-flex items-center gap-2 rounded-full border border-neutral-700 px-4 py-2 text-sm text-neutral-200 transition duration-300 hover:border-neutral-500 hover:bg-neutral-900'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-full border border-neutral-700 px-4 py-2 text-sm text-neutral-200 transition duration-300 hover:border-neutral-500 hover:bg-neutral-900 sm:w-auto'
                   >
                     Source
                     <svg

@@ -39,14 +39,14 @@ const About = () => {
           <p className='inline-flex items-center rounded-full border border-neutral-700 px-4 py-1 text-xs uppercase tracking-[0.2em] text-neutral-400'>
             About Me
           </p>
-          <h1 className='mt-5 text-4xl font-bold text-neutral-100 sm:text-5xl'>
+          <h1 className='mt-5 text-3xl font-bold text-neutral-100 sm:text-5xl'>
             Who <span className='text-orange-700'>I</span> Am
           </h1>
         </div>
 
         <div className='grid gap-8 lg:grid-cols-[1.5fr_1fr]'>
-          <article className='rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/40 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] sm:p-8'>
-            <p className='font-brand text-lg leading-relaxed text-neutral-300'>
+          <article className='rounded-2xl border border-neutral-800 bg-gradient-to-b from-neutral-900/80 to-neutral-950/40 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] sm:p-8'>
+            <p className='font-brand text-base leading-relaxed text-neutral-300 sm:text-lg'>
               I&apos;m a final year B.Tech Computer Science student and a frontend-focused developer skilled in React.js, JavaScript (ES6+), and the MERN stack, with a strong foundation in building scalable and high-performance web applications. I work with tools and technologies like Tailwind CSS, Node.js, Express, MongoDB, and JWT, and I enjoy enhancing user experiences through clean UI, efficient architecture, and smooth interactions.
             </p>
             {/* <p className='mt-6 font-brand text-lg leading-relaxed text-neutral-300'>
@@ -57,9 +57,9 @@ const About = () => {
               {stats.map((item) => (
                 <div
                   key={item.label}
-                  className='rounded-xl border border-neutral-800 bg-neutral-900/60 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-orange-700/60'
+                  className='rounded-xl border border-neutral-800 bg-neutral-900/60 p-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-orange-700/60 sm:p-4'
                 >
-                  <p className='text-3xl font-bold text-neutral-100'>
+                  <p className='text-2xl font-bold text-neutral-100 sm:text-3xl'>
                     {item.value}
                   </p>
                   <p className='mt-1 text-sm text-neutral-400'>{item.label}</p>
@@ -68,8 +68,8 @@ const About = () => {
             </div>
           </article>
 
-          <aside className='rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 sm:p-8'>
-            <h2 className='text-xl font-semibold text-neutral-100'>Find Me</h2>
+          <aside className='rounded-2xl border border-neutral-800 bg-neutral-900/50 p-5 sm:p-8'>
+            <h2 className='text-lg font-semibold text-neutral-100 sm:text-xl'>Find Me</h2>
             <p className='mt-2 text-sm leading-relaxed text-neutral-400'>
               Let&apos;s connect and build something meaningful together.
             </p>
@@ -80,7 +80,7 @@ const About = () => {
                   target="_blank"
                   key={social.name}
                   href={social.href}
-                  className='group flex items-center justify-between rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 transition duration-300 hover:border-orange-700/60 hover:bg-neutral-900'
+                  className='group flex items-center justify-between rounded-xl border border-neutral-800 bg-neutral-950/50 px-3.5 py-3 transition duration-300 hover:border-orange-700/60 hover:bg-neutral-900 sm:px-4'
                 >
                   <div className='flex items-center gap-3'>
                     <span className='flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-800/70 text-neutral-300 transition group-hover:bg-orange-700/20 group-hover:text-orange-300'>

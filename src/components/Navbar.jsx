@@ -6,10 +6,10 @@ const Navbar = () => {
 
     return (
         <section>
-            <div className='h-16 px-4 md:px-20 flex items-center rounded-2xl justify-between'>
+            <div className='flex h-16 items-center justify-between rounded-2xl px-2 sm:px-4 md:px-20'>
                 <div className='h-full w-fit flex items-center gap-3'>
-                    <a href="#home" className='font-bold text-2xl flex-wrap text-neutral-200 font-brand hover:opacity-90'>
-                        <span className='text-orange-700 font-bold text-2xl'>.</span>AG
+                    <a href="#home" className='font-brand text-xl font-bold flex-wrap text-neutral-200 hover:opacity-90 sm:text-2xl'>
+                        <span className='text-orange-700 text-xl font-bold sm:text-2xl'>.</span>AG
                     </a>
                 </div>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className='h-0.5 w-full bg-[#292929] mt-2 '></div>
 
             {open && (
-                <div className='md:hidden mt-3 px-4'>
+                <div className='md:hidden mt-3 px-2 sm:px-4'>
                     <div className='flex flex-col gap-3 bg-transparent text-white'>
                         <a href="#about" onClick={() => setOpen(false)} className='py-2 opacity-80 hover:opacity-100 duration-200'>About</a>
                         <a href="#skills" onClick={() => setOpen(false)} className='py-2 opacity-80 hover:opacity-100 duration-200'>Skills</a>
@@ -45,7 +45,7 @@ const Navbar = () => {
                         <a href="#contact" onClick={() => setOpen(false)} className='py-2 opacity-80 hover:opacity-100 duration-200'>Contact</a>
 
                         <div className='pt-2'>
-                            <a target='_blank' href='https://drive.google.com/file/d/1BR9XbVwD65CTjV3iwixlVBDzgX6hQadC/view?usp=sharing' className='w-full flex justify-center border border-white text-white px-4 py-2 rounded-2xl opacity-90 hover:bg-[#292929] duration-200 font-semibold'>
+                            <a target='_blank' href='https://drive.google.com/file/d/1BR9XbVwD65CTjV3iwixlVBDzgX6hQadC/view?usp=sharing' className='flex w-full justify-center border border-white px-4 py-2 text-white rounded-2xl opacity-90 hover:bg-[#292929] duration-200 font-semibold'>
                                 Resume
                                 <ArrowUpRight size={18} strokeWidth={2} />
                             </a>
